@@ -11,11 +11,12 @@ import {
 	Input,
 	Content,
 	Button,
+	BlueButton,
 } from './WriteComponents';
 import { CFA_ADDRESS, FDAIX_ADDRESS, HOST_ADDRESS } from '../../constants';
 
 const CreateInstance = () => {
-	const { address } = useEthereum();
+	const { address, connect, error } = useEthereum();
 	const { NewInstance } = useERC721();
 	const { mutate } = NewInstance();
 	const [tokenName, setTokenName] = useState('');
@@ -44,26 +45,27 @@ const CreateInstance = () => {
 			<p>Create your own instance of a token </p>
 			<Accordion.Root type="single" collapsible>
 				<Item value="item-1">
-					<TriggerContainer>
-						<Trigger disabled={!address}>
-							{!address ? 'Connect Wallet' : 'Create Instance'}
-						</Trigger>
-					</TriggerContainer>
-					<Parameters>
-						<Content>
+					{!address ? (
+						<BlueButton onClick={connect}>
+							connect wallet
+						</BlueButton>
+					) : (
+						<div>
 							<Input
-								placeholder="Token Name"
-								onChange={(e) => setTokenName(e.target.value)}
+							placeholder="Token Name"
+							onChange={(e) => setTokenName(e.target.value)}
 							/>
 							<Input
 								placeholder="Token Symbol"
 								onChange={(e) => setTokenSymbol(e.target.value)}
 							/>
 							<Button onClick={createNewInstance}>
-								{!address ? 'Connet Wallet' : 'Create Instance'}
+								{!address ? 'Connect Wallet' : 'Create Instance'}
 							</Button>
-						</Content>
-					</Parameters>
+						</div>
+					)}
+
+
 				</Item>
 			</Accordion.Root>
 		</Box>

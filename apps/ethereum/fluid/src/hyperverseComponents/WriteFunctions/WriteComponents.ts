@@ -51,6 +51,17 @@ export const Trigger = styled(Accordion.Trigger, {
 	margin: '10px auto 0',
 });
 
+export const BlueButton = styled(Accordion.Trigger, {
+	minWidth: '130px',
+	backgroundColor: '$blue200',
+	outline: 'none',
+	border: 'none',
+	padding: '10px 15px',
+	borderRadius: '90px',
+	cursor: 'pointer',
+	margin: '10px auto 0',
+});
+
 export const Parameters = styled(Accordion.Content, {
 	display: 'flex',
 	flexDirection: 'column',

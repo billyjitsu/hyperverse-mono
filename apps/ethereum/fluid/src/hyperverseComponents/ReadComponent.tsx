@@ -2,6 +2,7 @@ import { styled } from '../../stitches.config';
 import { useEthereum } from '@decentology/hyperverse-ethereum';
 import { UseQueryResult } from 'react-query';
 import { useState } from 'react';
+// import { sleep } from 'react-query';
 
 const shortenHash = (hash: string = '', charLength: number = 6, postCharLength?: number) => {
 	let shortendHash;
@@ -24,19 +25,42 @@ type Props = {
 	isAddress?: boolean;
 };
 const ReadComponent = ({ hook, header, description, buttonText, isAddress }: Props) => {
-	const { address } = useEthereum();
+	const { connect, address } = useEthereum();
 	const [hidden, setHidden] = useState(false);
+	const [copied, setCopied ] = useState(false)
 	const { data } = hook;
 
 	const dataFetched = isAddress ? shortenHash(data, 5, 5) : data;
+	const dataFetchedFull = data;
+
+	const copy = async (e) => {
+		navigator.clipboard.writeText(dataFetchedFull); 
+		setCopied(true); 
+		setTimeout(() => {
+			setCopied(false)
+		  }, 1500);
+	}
 
 	return (
 		<Box>
-			<h4>{header}</h4>
-			<p>{description}</p>
-			<Button disabled={!address} onClick={() => setHidden((p) => !p)}>
-				{!address ? 'Connect Wallet' : !hidden ? buttonText : dataFetched}
-			</Button>
+			<div>
+				<h4>{header}</h4>
+				<p>{description}</p>
+				{!address ? (
+					<BlueButton disabled={!address} onClick={connect}>
+					{!address ? 'Connect Wallet' : !hidden ? buttonText : dataFetched}
+					</BlueButton>
+				) : (
+					<div>
+						<h5>{dataFetched}</h5>
+						{!copied ? (
+							<Button onClick={copy}>Copy</Button>
+						) : (
+							<CopiedButton onClick={function (e) {navigator.clipboard.writeText(dataFetchedFull); setCopied(false)}}>Copied!</CopiedButton>
+						)}
+					</div>
+				)}
+			</div>
 		</Box>
 	);
 };
@@ -44,7 +68,7 @@ const ReadComponent = ({ hook, header, description, buttonText, isAddress }: Pro
 export default ReadComponent;
 
 const Box = styled('div', {
-	maxHeight: '150px',
+	maxHeight: '240px',
 	maxWidth: '220px',
 	display: 'flex',
 	flexDirection: 'column',
@@ -76,4 +100,29 @@ const Button = styled('button', {
 	'&:hover': {
 		opacity: 0.8,
 	},
+});
+
+const CopiedButton = styled('button', {
+	minWidth: '150px',
+	backgroundColor: '$blue200',
+	outline: 'none',
+	border: 'none',
+	padding: '10px 15px',
+	borderRadius: '90px',
+	cursor: 'pointer',
+	margin: '10px auto 0',
+	'&:hover': {
+		opacity: 0.8,
+	},
+});
+
+const BlueButton = styled('button', {
+	minWidth: '130px',
+	backgroundColor: '$blue200',
+	outline: 'none',
+	border: 'none',
+	padding: '10px 15px',
+	borderRadius: '90px',
+	cursor: 'pointer',
+	margin: '10px auto 0',
 });
