@@ -48,7 +48,7 @@ export const Team = () => {
 							label="@jerrodc.eth"
 							externalUrl="https://twitter.com/gmFromJerrod"
 						/>
-						<TeamButton label="@nfter" externalUrl="https://twitter.com/cryptorun0" />
+						<TeamButton label="@nfter" externalUrl="https://twitter.com/varunparakh" />
 					</div>
 				</div>
 			</div>
