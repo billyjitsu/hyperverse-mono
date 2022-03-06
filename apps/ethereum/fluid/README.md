@@ -1,3 +1,15 @@
+# Fluidity
+
+Fluidity is a bootstrapping utility for DAOs / Organizations to sell an NFT for ETH while “streaming” their token to the NFT owner/buyer over a set vesting period.
+
+This repo is a sample front-end template, which uses a custom Hyperverse smart module `/packages/hypverse-ethereum-fluid`.
+
+The following video demonstrates Fluidity: https://share.vidyard.com/watch/4UVLzijQRGVC8Xhaw76NRF
+
+A sample front-end is hosted here: https://hyperverse-mono.vercel.app/
+
+____
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -7,11 +19,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ```bash
 npm install
 ```
+or
+```bash
+yarn
+```
 
 #### 2. Run the development server:
 
 ```bash
 npm run dev
+```
+or
+```bash
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
