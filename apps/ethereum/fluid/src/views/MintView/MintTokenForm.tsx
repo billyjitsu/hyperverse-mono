@@ -15,7 +15,7 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit }) => {
 	};
 
 	return (
-		<div className="w-3/6 mt-4 gap-4">
+		<div className="md:w-3/6 mt-4 gap-4">
 			<div>
 				<p className="mt-4 text-xl">Begin by entering an NFT name and symbol.</p>
 			</div>

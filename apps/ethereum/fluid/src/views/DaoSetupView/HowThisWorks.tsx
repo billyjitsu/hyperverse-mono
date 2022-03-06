@@ -19,15 +19,22 @@ const HowThisWorks: FC<HowThisWorksProps> = ({ className }) => {
 				</p>
 				<p className="mt-4 text-xl">
 					By initializing your NFT contract first, with the help of{' '}
-					<b>Decentology's Hyperverse Smart Modules</b>, your members will be able to mint
-					NFTs with streaming token functionality at a much lower gas rate than deploying
-					individual NFTs.
+					<a
+						className="font-bold underline hover:text-gray-300"
+						href="https://docs.hyperverse.dev/compose/introduction"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Decentology's Hyperverse Smart Modules
+					</a>
+					, your members will be able to mint NFTs with streaming token functionality at a
+					much lower gas rate than deploying individual NFTs.
 				</p>
 				<p className="mt-4 text-xl">Technologies that made this possible:</p>
 				<ul>
 					<li>
 						<a
-							className="text-xl"
+							className="text-xl font-bold"
 							href="https://www.superfluid.finance/"
 							target="_blank"
 							rel="noopener noreferrer"
@@ -35,7 +42,7 @@ const HowThisWorks: FC<HowThisWorksProps> = ({ className }) => {
 							• <span className="underline hover:text-gray-300">Superfluid</span>
 						</a>
 					</li>
-					<li className="text-xl">
+					<li className="text-xl font-bold">
 						<a
 							className="text-x"
 							href="https://www.decentology.com/"

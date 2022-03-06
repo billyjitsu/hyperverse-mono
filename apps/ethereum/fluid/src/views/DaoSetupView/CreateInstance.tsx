@@ -50,7 +50,7 @@ const CreateInstance: FC<CreateInstanceProps> = ({ className }) => {
 					<CreateInstanceForm onSubmit={handleMintNft} />
 				) : (
 					<div className="py-4">
-						<h1 className="">Please connect your wallet to continue</h1>
+						<h1 className="mt-4 text-xl">Please connect your wallet to continue</h1>
 						<ConnectWallet className="mt-4" />
 					</div>
 				)}
