@@ -35,10 +35,19 @@ export const Team = () => {
 				<div className="mt-4 flex gap-6">
 					<p className="text-black pt-1">We are:</p>
 					<div className="flex gap-2">
-						<TeamButton label="@billyjitsu" />
-						<TeamButton label="@cryptokrizz" />
-						<TeamButton label="@nathanng.eth" />
-						<TeamButton label="@jerrod" />
+						<TeamButton label="@billyjitsu" externalUrl="https://twitter.com/wc49358" />
+						<TeamButton
+							label="@cryptokrizz"
+							externalUrl="https://twitter.com/cryptokrizzz"
+						/>
+						<TeamButton
+							label="@nathanng.eth"
+							externalUrl="https://twitter.com/ngnathan"
+						/>
+						<TeamButton
+							label="@jerrodc.eth"
+							externalUrl="https://twitter.com/gmFromJerrod"
+						/>
 						<TeamButton label="@nfter" />
 					</div>
 				</div>

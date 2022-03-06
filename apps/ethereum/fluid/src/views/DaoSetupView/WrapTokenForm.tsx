@@ -1,17 +1,17 @@
 import { FC, FormEvent, useState } from 'react';
 
 interface WrapTokenFormProps {
-	onSubmit: (nftName: string, nftSymbol: string) => void;
+	onSubmit: (tokenName: string, tokenSymbol: string) => void;
 }
 
 const WrapTokenForm: FC<WrapTokenFormProps> = ({ onSubmit }) => {
-	const [nftName, setNftName] = useState('');
-	const [nftSymbol, setNftSymbol] = useState('');
+	const [tokenName, setTokenName] = useState('');
+	const [tokenSymbol, setTokenSymbol] = useState('');
 
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		if (!nftName || !nftSymbol) return;
-		onSubmit(nftName, nftSymbol);
+		if (!tokenName || !tokenSymbol) return;
+		onSubmit(tokenName, tokenSymbol);
 	};
 
 	return (
@@ -28,40 +28,54 @@ const WrapTokenForm: FC<WrapTokenFormProps> = ({ onSubmit }) => {
 					Superfluid Super Tokens
 				</a>
 			</p>
-			<form className="" onSubmit={handleSubmit}>
+			{/* Replace with form to call createErc20Token function on Superfluid SuperTokenFactory */}
+			<a
+				className="mt-4"
+				href="https://app.superfluid.finance/dashboard"
+				target="_blank"
+				rel="noopenner noreferrer"
+			>
+				<button
+					type="button"
+					className="py-2 px-4 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold"
+				>
+					Visit Superfluid Dashboard
+				</button>
+			</a>
+			{/* <form className="" onSubmit={handleSubmit}>
 				<div className="flex gap-4 mt-4">
-					{/* <div className="w-full flex flex-col">
-						<label htmlFor="nftName">Name</label>
+					<div className="w-full flex flex-col">
+						<label htmlFor="tokenName">Name</label>
 						<input
-							value={nftName}
-							onChange={(e) => setNftName(e.target.value)}
-							id="nftName"
+							value={tokenName}
+							onChange={(e) => setTokenName(e.target.value)}
+							id="tokenName"
 							type="text"
 							className="w-full py-2 px-3 form-control border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none text-black"
 							placeholder="web3con NFTs"
 						/>
 					</div>
 					<div className="w-full flex flex-col">
-						<label htmlFor="nftSymbol">Symbol</label>
+						<label htmlFor="tokenSymbol">Symbol</label>
 						<input
-							value={nftSymbol}
-							onChange={(e) => setNftSymbol(e.target.value)}
-							id="nftSymbol"
+							value={tokenSymbol}
+							onChange={(e) => setTokenSymbol(e.target.value)}
+							id="tokenSymbol"
 							type="text"
 							className="w-full py-2 px-3 form-control border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none text-black"
 							placeholder="HACK"
 						/>
-					</div> */}
+					</div>
 				</div>
 				<div className="w-96 flex gap-4">
-					{/* <button
+					<button
 						type="submit"
 						className="float-left mt-6 py-2 px-4 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold"
 					>
 						Create instance
-					</button> */}
+					</button>
 				</div>
-			</form>
+			</form> */}
 		</div>
 	);
 };

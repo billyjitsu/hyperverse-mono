@@ -144,9 +144,11 @@ function ERC721State(initialState: { tenantId: string } = { tenantId: TENANT_ADD
 		}
 	};
 
-	const mintNFT = async (to: string, flowRate: string) => {
+	const mintNFT = async (value: string) => {
 		try {
-			const mint = await proxyContract?.issueNFT(to, flowRate);
+			const mint = await proxyContract?.issueNFT({
+				value: ethers.utils.parseEther(value.toString()),
+			});
 			return mint.wait();
 		} catch (err) {
 			errors(err);
@@ -157,6 +159,16 @@ function ERC721State(initialState: { tenantId: string } = { tenantId: TENANT_ADD
 	const transfer = async (from: string, to: string, tokenId: number) => {
 		try {
 			const transfer = await proxyContract?.transferFrom(from, to, tokenId);
+			return transfer.wait();
+		} catch (err) {
+			errors(err);
+			throw err;
+		}
+	};
+
+	const transferERC20 = async (erc20TokenAddress: string, to: string, amount: number) => {
+		try {
+			const transfer = await proxyContract?.transferERC20(erc20TokenAddress, to, amount);
 			return transfer.wait();
 		} catch (err) {
 			errors(err);
@@ -211,10 +223,10 @@ function ERC721State(initialState: { tenantId: string } = { tenantId: TENANT_ADD
 			}),
 		MintNFT: (
 			options?: Omit<
-				UseMutationOptions<unknown, unknown, { to: string; flowRate: string }, unknown>,
+				UseMutationOptions<unknown, unknown, { value: string }, unknown>,
 				'mutationFn'
 			>
-		) => useMutation(({ to, flowRate }) => mintNFT(to, flowRate), options),
+		) => useMutation(({ value }) => mintNFT(value), options),
 		Transfer: (
 			options?: Omit<
 				UseMutationOptions<
@@ -226,6 +238,21 @@ function ERC721State(initialState: { tenantId: string } = { tenantId: TENANT_ADD
 				'mutationFn'
 			>
 		) => useMutation(({ from, to, tokenId }) => transfer(from, to, tokenId), options),
+		TransferERC20: (
+			options?: Omit<
+				UseMutationOptions<
+					unknown,
+					unknown,
+					{ erc20TokenAddress: string; to: string; amount: number },
+					unknown
+				>,
+				'mutationFn'
+			>
+		) =>
+			useMutation(
+				({ erc20TokenAddress, to, amount }) => transferERC20(erc20TokenAddress, to, amount),
+				options
+			),
 	};
 }
 
