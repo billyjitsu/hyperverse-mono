@@ -23,17 +23,20 @@ const TopBar: FC<TopBarProps> = ({ className }) => {
 						<Link href="/">fluidity</Link>
 					</div>
 					{/* Desktop Header Items + Connect Wallet button */}
-					<div className="hidden sm:flex items-center gap-16 text-xl">
+					<div className="hidden md:flex items-center gap-8 xl:gap-16 text-xl">
+						<TopLink href="/dao-setup" text="DAO setup" />
 						<TopLink href="/mint" text="mint" />
 						<TopLink href="/#team" text="team" />
 						<TopLink href="/#faq" text="faq" />
-						<TopLink href="/hyperverse" text="hyperverse" />
+						<div className="hidden lg:block">
+							<TopLink href="/hyperverse" text="hyperverse" />
+						</div>
 					</div>
-					<div className="hidden sm:flex">
+					<div className="hidden md:flex">
 						<Wallet ens={address} userAddress={address} />
 					</div>
 					{/* Mobile Header */}
-					<div className="sm:hidden">
+					<div className="md:hidden">
 						<Disclosure.Button className="-mr-4 p-2">
 							<MenuIcon className="w-5 h-5 text-gray-900" />
 						</Disclosure.Button>
@@ -41,21 +44,35 @@ const TopBar: FC<TopBarProps> = ({ className }) => {
 				</div>
 				<Disclosure.Panel className="px-8 pb-4 text-gray-500">
 					<div className="flex flex-col items-center gap-4">
-						{/* <Link href='#fluidity'>
+						<Link href="/">
 							<a>
-								<Disclosure.Button className='font-bold text-gray-700 hover:text-gray-500'>
-									about fluidity
+								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
+									home
 								</Disclosure.Button>
 							</a>
-						</Link> */}
-						<Link href="#team">
+						</Link>
+						<Link href="/dao-setup">
+							<a>
+								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
+									DAO setup
+								</Disclosure.Button>
+							</a>
+						</Link>
+						<Link href="/mint">
+							<a>
+								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
+									Mint
+								</Disclosure.Button>
+							</a>
+						</Link>
+						<Link href="/#team">
 							<a>
 								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
 									team
 								</Disclosure.Button>
 							</a>
 						</Link>
-						<Link href="#faq">
+						<Link href="/#faq">
 							<a>
 								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
 									faq
