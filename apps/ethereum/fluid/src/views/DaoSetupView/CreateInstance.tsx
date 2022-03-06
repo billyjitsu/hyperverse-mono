@@ -1,11 +1,12 @@
 import { FC, useState } from 'react';
-import clsx from 'clsx';
 import { useERC721 } from '@decentology/hyperverse-ethereum-fluid';
 
 import { HOST_ADDRESS, CFA_ADDRESS, FDAIX_ADDRESS } from '../../constants';
 import ConnectWallet from '../../components/ConnectWallet';
 import { useEthereum } from '@decentology/hyperverse-ethereum';
 import CreateInstanceForm from './CreateInstanceForm';
+import FluidNFTJSON from '../../abis/FluidNFT.json';
+import { ethers } from 'ethers';
 
 interface CreateInstanceProps {
 	className?: string;
@@ -36,7 +37,24 @@ const CreateInstance: FC<CreateInstanceProps> = ({ className }) => {
 				' with the symbol: ',
 				tokenSymbol
 			);
-			mutate(instanceData);
+			// mutate(instanceData);
+
+			// Replace with NewInstance.mutate function
+			const provider = new ethers.providers.Web3Provider(window.ethereum);
+			const signer = provider.getSigner();
+			const proxyContract = new ethers.Contract(
+				'0xdD3647744eB13Dc27bA3583b16769f0214Dfc160',
+				FluidNFTJSON.abi,
+				signer
+			);
+			proxyContract.init(
+				tokenName,
+				tokenSymbol,
+				address,
+				HOST_ADDRESS,
+				CFA_ADDRESS,
+				FDAIX_ADDRESS
+			);
 		} catch (error) {
 			console.error(error);
 		}

@@ -48,12 +48,12 @@ const CreateInstanceForm: FC<CreateInstanceFormProps> = ({ onSubmit }) => {
 						/>
 					</div>
 				</div>
-				<div className="w-96 flex gap-4">
+				<div className="flex gap-4">
 					<button
 						type="submit"
 						className="float-left mt-6 py-2 px-4 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold"
 					>
-						Create instance
+						Initialize
 					</button>
 				</div>
 			</form>

@@ -17,17 +17,11 @@ const MintNFT = () => {
 	const { address } = useEthereum();
 	const { MintNFT } = useERC721();
 	const { mutate } = MintNFT();
-	const [receiver, setReceiver] = useState('');
-	const [flowRate, setFlowRate] = useState('3858024691358');
+	const [value, setValue] = useState('');
 
 	const mintAnNFT = async () => {
 		try {
-			const instanceData = {
-				to: receiver,
-				flowRate: flowRate,
-			};
-			console.log('instanceData', instanceData);
-			mutate(instanceData);
+			mutate({ value: value });
 		} catch (error) {
 			throw error;
 		}
@@ -47,14 +41,9 @@ const MintNFT = () => {
 					<Parameters>
 						<Content>
 							<Input
-								placeholder="Receiver"
-								onChange={(e) => setReceiver(e.target.value)}
-								value={receiver}
-							/>
-							<Input
-								placeholder="Flow Rate"
-								onChange={(e) => setFlowRate(e.target.value)}
-								value={flowRate}
+								placeholder="Value (Eth)"
+								onChange={(e) => setValue(e.target.value)}
+								value={value}
 							/>
 							<Button onClick={mintAnNFT}>
 								{!address ? 'Connet Wallet' : 'Mint'}
