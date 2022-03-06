@@ -12,11 +12,11 @@ export interface IWalletConnectConnectorOptions extends IAbstractConnectorOption
 const ConnectToWalletLink = (WalletLink: any, opts: IWalletConnectConnectorOptions) => {
 	return new Promise(async (resolve, reject) => {
 		const options = opts || ({} as IWalletLinkConnectorOptions);
-		const infuraId = options.infuraId || '';
-		const chainId = options.chainId || 1;
-		const appName = options.appName || '';
+		const infuraId = options.infuraId;
+		const chainId = options.chainId;
+		const appName = options.appName;
 		const appLogoUrl = options.appLogoUrl;
-		const darkMode = options.darkMode || false;
+		const darkMode = options.darkMode;
 
 		let rpc = options.rpc || undefined;
 		if (options.infuraId && !options.rpc) {
