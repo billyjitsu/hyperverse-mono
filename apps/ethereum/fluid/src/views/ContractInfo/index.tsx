@@ -29,6 +29,7 @@ export const ContractInfo = ({ nftContractItem }: any) => {
 	return (
 		<section className="w-full bg-white" id="start">
 			<div className="max-w-7xl mx-auto py-16 px-8 text-black">
+				<p className="text-3xl font-bold">for developers</p>
 				<h1 className="text-7xl font-bold">contract info</h1>
 				<div className="mt-4 text-lg">
 					<b>Wallet:</b> {address || 'Not connected'}

@@ -12,14 +12,9 @@ const HowThisWorks: FC<HowThisWorksProps> = ({ className }) => {
 			id="create-instance"
 		>
 			<div className="max-w-7xl mx-auto py-16 px-8 text-white">
-				<h1 className="text-7xl font-bold">How this works</h1>
+				<h1 className="text-5xl md:text-7xl font-bold">How this works</h1>
 				<p className="mt-4 text-xl">
-					Begin by defining your NFT metadata (name and symbol), which you'll use for all
-					of your streaming NFTs.
-				</p>
-				<p className="mt-4 text-xl">
-					You'll need to create an instance of your NFT and then mint the NFTs
-					individually.
+					This setup page is meant for members of DAOs to mint an NFT.
 				</p>
 			</div>
 		</section>

@@ -17,7 +17,7 @@ const WrapToken: FC<WrapTokenProps> = ({ className }) => {
 	const handleWrapToken = () => {};
 
 	return (
-		<section className="w-full bg-white" id="create-instance">
+		<section className="w-full bg-white" id="wrap-token">
 			<div className="max-w-7xl mx-auto py-16 px-8 text-black">
 				<p className="text-3xl font-bold">(Optional)</p>
 				<h1 className="text-5xl md:text-7xl  font-bold">1. Wrap your custom token</h1>
@@ -25,7 +25,7 @@ const WrapToken: FC<WrapTokenProps> = ({ className }) => {
 					<WrapTokenForm onSubmit={handleWrapToken} />
 				) : (
 					<div className="py-4">
-						<h1 className="">Please connect your wallet to continue</h1>
+						<h1 className="mt-4 text-xl">Please connect your wallet to continue</h1>
 						<ConnectWallet className="mt-4" />
 					</div>
 				)}
